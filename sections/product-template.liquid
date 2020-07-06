@@ -15,6 +15,9 @@
   {%- assign compare_at_price = current_variant.compare_at_price -%}
   {%- assign price = current_variant.price -%}
 
+  <script>console.log({{ product | json }});</script>
+  <script>console.log({{ current_variant | json }});</script>
+
   {% case section.settings.media_size %}
     {% when 'small' %}
       {%- assign product_media_width = 'medium-up--one-third' -%}
@@ -34,6 +37,16 @@
       {%- assign height = 1090 -%}
       {%- assign enable_image_zoom = false -%}
   {% endcase %}
+
+  {%- assign option_one = product.selected_or_first_available_variant.option1 -%}
+  {%- assign option_two = product.selected_or_first_available_variant.option2 -%}
+  {%- assign option_three = product.selected_or_first_available_variant.option3 -%}
+
+  <div id="enclosure" style="border: 1px solid black; height: 300px; width: 300px; display: flex; flex-direction: column; text-align: center; justify-content: space-evenly; align-items: center;">
+    <div data-option1 id="option_1" style="border:2px solid blue; width: 100px; height: 40px;">{{option_one}}</div>
+    <div data-option2 id="option_2" style="border: 1px solid red; width: 100px; height: 40px;">{{option_two}}</div>
+    <div data-option3 id="option_3" style="border: 1px solid yellow; width: 100px; height: 40px;">{{option_three}}</div>
+  </div>
 
   <div class="grid product-single{% if section.settings.enable_payment_button %} product-single--{{ section.settings.media_size }}-media{% endif %}">
     <div class="grid__item product-single__media-group {{ product_media_width }}{% if section.settings.media_size == 'full' %} product-single__media-group--full{% endif %}" data-product-single-media-group>
