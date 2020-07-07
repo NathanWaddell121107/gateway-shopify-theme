@@ -7091,43 +7091,47 @@ theme.Product = (function () {
      *
      * @param {object} variant
      */
-    _updateImageBasedOnOptionsChosen: function (variant) {
-      var $imageChangeOption1 = $(
+    _updateImageBasedOnOptionsChosen: function (evt) {
+      const { variant } = evt;
+      const $imageChangeOption1 = $(
         this.selectors.imageChangeOption1,
         this.$container
       );
-      var $imageChangeOption2 = $(
+      const $imageChangeOption2 = $(
         this.selectors.imageChangeOption2,
         this.$container
       );
-      var $imageChangeOption3 = $(
+      const $imageChangeOption3 = $(
         this.selectors.imageChangeOption3,
         this.$container
       );
 
-      if (variant.variant.option1 === "1HP") {
+      for (option of variant.options) {
+      }
+
+      if (variant.option1 === "1HP") {
         $imageChangeOption1.css("background-color", "red");
-        $imageChangeOption1.text("1HP");
+        $imageChangeOption1.text(variant.option1);
       }
-      if (variant.variant.option1 === "3HP") {
+      if (variant.option1 === "3HP") {
         $imageChangeOption1.css("background-color", "gray");
-        $imageChangeOption1.text("3HP");
+        $imageChangeOption1.text(variant.option1);
       }
-      if (variant.variant.option2 === "1:1.5") {
+      if (variant.option2 === "1:1.5") {
         $imageChangeOption2.css("background-color", "red");
-        $imageChangeOption2.text("1:1.5");
+        $imageChangeOption2.text(variant.option2);
       }
-      if (variant.variant.option2 === "9.3:1") {
+      if (variant.option2 === "9.3:1") {
         $imageChangeOption2.css("background-color", "gray");
-        $imageChangeOption2.text("9.3:1");
+        $imageChangeOption2.text(variant.option2);
       }
-      if (variant.variant.option3 === "Red") {
+      if (variant.option3 === "Red") {
         $imageChangeOption3.css("background-color", "red");
-        $imageChangeOption3.text("Red");
+        $imageChangeOption3.text(variant.option3);
       }
-      if (variant.variant.option3 === "Blue") {
+      if (variant.option3 === "Blue") {
         $imageChangeOption3.css("background-color", "gray");
-        $imageChangeOption3.text("Blue");
+        $imageChangeOption3.text(variant.option3);
       }
     },
 
